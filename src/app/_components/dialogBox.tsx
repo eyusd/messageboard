@@ -43,7 +43,7 @@ export default function DialogBox() {
   });
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
-    await fetch(process.env.VERCEL_URL + "/api/msg", {
+    await fetch("/api/msg", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -68,7 +68,7 @@ export default function DialogBox() {
 
   useEffect(() => {
     const id = setInterval(() => {
-      fetch(process.env.VERCEL_URL + "/api/msg", { cache: "no-store" })
+      fetch("/api/msg", { cache: "no-store" })
         .then((result) => result.json())
         .then((messages) => {
           setMessages(messages);
