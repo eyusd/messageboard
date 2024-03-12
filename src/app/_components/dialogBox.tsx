@@ -65,7 +65,6 @@ export default function DialogBox() {
   const [messages, setMessages] = React.useState<MessageProps[]>([]);
 
   //fetch messages every second
-
   useEffect(() => {
     const id = setInterval(() => {
       fetch("/api/msg", { cache: "no-store" })
@@ -87,8 +86,8 @@ export default function DialogBox() {
         <ScrollArea className="h-full">
           <div className="h-full grid gap-4 p-6">
             {messages &&
-              messages.map((message, key) => (
-                <Message key={key} {...message} />
+              messages.map((message, index) => (
+                <Message key={index} {...message} index={index}/>
               ))}
           </div>
         </ScrollArea>
